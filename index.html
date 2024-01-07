@@ -1,51 +1,71 @@
-<!DOCTYPE html>
+!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <!-- General meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-
-    <title>♡</title>
-
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAD/1vIAJSkqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEREREQAAAAEAAQABAAAAAQABAAEAAAABAAEAAQAAAAAAAAAAAAAAAAAAAAAAAAEAAQABAAEAARARAAEQEQAAEBAAABAQAAAREAAAERAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Pixelify+Sans&family=Press+Start+2P&family=Sacramento&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-          font-family: "Press Start 2P";
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="canonical" href="https://html5-templates.com/" />
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <title>Ishika Soni</title>
 </head>
-<body>
-    <a href="index.html" style="color: inherit;"><h1>ishika soni</h1></a>
-    <hr width="700px;" color="white" line-height= 1 noshade="" size="1px">
-    <br>
-    <a href="projects.html"><h3>projects</h3></a>
-    <a href="sketchbook.html"><h3>sketchbook</h3></a>
-    <a href="paintings.html"><h3>paintings</h3></a>
-    <a href="pixelart.html"><h3>pixel art</h3></a>
-    <a href="photography.html"><h3>photography</h3></a>
-    <a href="resumecontact.html"><h3>resume & contact</h3></a>
 
-    <br><br><br>
- 
-    <div class="div1">
-        <img src="img/entercolor (1).png" alt="O.O" style="width:400px;padding-right:50px;">
-        <div class="div2">
-            <p style="font-size: 15px; margin-bottom: 20px;">hello world :)</p>
-            <hr width="70px;" align="left" color="white" noshade="" size="6px" >
-            <br>
-            <p style="line-height: 2.5; font-size: 9px;">Welcome to my website portfolio. I am <br> Ishika Soni, a senior at Hunter College <br> 
-                in New York, NY pursuing a Bachelor of <br> Arts in Computer Science. 
-                <br><br><br>
-                Please feel free to contact me for<br>
-                further questions/inquiries! Enjoy.</p> 
-                <!--i'm not a web developer :p-->
-        </div>
+<body>
+  <div id="desktop">
+    <div class="window" data-title="about me!">
+      <strong>hello world!</strong><br><br>
+      welcome to my website portfolio. i am
+      Ishika Soni, a senior at Hunter College
+      in NYC pursuing a Bachelor of
+      Arts in Computer Science. <br><br>
+
+
+      please feel free to contact me for
+      further questions/inquiries! enjoy.
+    </div>
+    <div class="window" data-title="contact">
+      <strong>github: </strong><a href="https://github.com/issoni"> issoni</a><br>
+      <strong>linkedin: </strong><a href="https://www.linkedin.com/in/ishika-soni/"> ishika-soni</a><br>
+      <strong>email: </strong><a href="mailto:ishikasoni50@gmail.com"> ishikasoni50@gmail.com</a>
+    </div>
+    <div class="window" data-title="resume">
+      <strong>education:</strong> Hunter College, BA in Computer Science <br><br>
+      <strong>skills:</strong> <br> 
+      <i>programming languages:</i> java, c#, c++, python, html/css/js, typescript, jest <br> 
+      <i>software:</i> git, flask, figma, unity, blender, pygame <br>
+      <i>platforms:</i> windows, mac, docker, azure <br><br>
+      <strong>experience:</strong> <br> 
+      - software engineering intern at Microsoft <br>
+      - explorer intern at Microsoft <br>
+      - web design intern at Hazil Studios <br>
+      - production engineering fellow at MLH <br><br>
+      <hr />
+     <a href= IshikaSEngResume.docx.pdf> pdf version of my resume </a>
+
+    </div>
+    <div class="window closed" data-title="misc :)">
+      i like to create art in my free time :) <br><br>
+      if you like handmade miniature accessories: <a href="https://www.etsy.com/shop/Ishikraft/"> my etsy</a> <br><br>
+      if you want to see a collection of things i have made so far: <a href="https://www.artstation.com/ishikasoni"> my artstation</a>
     </div>
 
+    <div id="taskbar">
+    </div>
 
+    <div id="icons">
+      <a class="openWindow" data-id="0">about me!</a>
+      <a class="openWindow" data-id="1">contact</a>
+      <a class="openWindow" data-id="2">resume</a>
+      <a class="openWindow" data-id="3">misc :)</a>
+    </div>
+    <!--<a href="https://html5-templates.com/" rel="nofollow" target="_blank" id="templateLink">&copy; HTML5-Templates.com</a>	
+     You can use this template freely if you leave a visible link to HTML5-Templates.com 
+    <a>Ishika Soni</a>-->
+  </div>
+</body>
+
+</html>
