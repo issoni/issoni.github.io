@@ -190,9 +190,9 @@ img {
 #window2 {	top: 250px; left: 300px;}
 #window3 {	top: 125px; left: 420px;}
 #window0 .wincontent {	width: 600px; height: 410px;	}
-#window1 .wincontent {	width: 500px; height: 300px;	}
+#window1 .wincontent {	width: 550px; height: 475px;	}
 #window2 .wincontent {	width: 400px; height: 350px;	}
-#window3 .wincontent {	width: 400px; height: 350px;	}
+#window3 .wincontent {	width: 545px; height: 745px;	}
 @media screen and (max-width:960px){
   #window0 {	left: 10px;	}
   #window3 {	left: 50px;	}	
