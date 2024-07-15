@@ -31,6 +31,55 @@ img {
   background-image: radial-gradient(black 2px, white 2px);
   background-size:40px 40px;
 }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 10px;
+  padding: 10px;
+}
+
+.grid-container > div {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.webdev {
+  background-color: mediumpurple;
+  padding: 10px; 
+  border: 2px dashed black; 
+}
+
+.cpp {
+  background-color: lightsalmon;
+  padding: 10px; 
+  border: 2px dashed black; 
+}
+
+.python {
+  background-color: yellow;
+  padding: 10px; 
+  border: 2px dashed black; 
+}
+
+.java {
+  background-color: pink;
+  padding: 10px; 
+  border: 2px dashed black; 
+}
+
+.iOS {
+  background-color: lightgreen;
+  padding: 10px; 
+  border: 2px dashed black; 
+}
+
+.unity {
+  background-color: lightsteelblue;
+  padding: 10px; 
+  border: 2px dashed black; 
+}
+
 .window {
     position: absolute;
     border: 2px solid #000;
@@ -189,10 +238,12 @@ img {
 #window1 {	top: 400px; left: 120px;}
 #window2 {	top: 250px; left: 300px;}
 #window3 {	top: 125px; left: 420px;}
+#window4 {	top: 100px; left: 400px;}
 #window0 .wincontent {	width: 600px; height: 410px;	}
 #window1 .wincontent {	width: 550px; height: 475px;	}
-#window2 .wincontent {	width: 400px; height: 350px;	}
-#window3 .wincontent {	width: 545px; height: 745px;	}
+#window2 .wincontent {	width: 800px; height: 900px;	}
+#window3 .wincontent {	width: 700px; height: 300px;	}
+#window4 .wincontent {	width: 545px; height: 745px;	}
 @media screen and (max-width:960px){
   #window0 {	left: 10px;	}
   #window3 {	left: 50px;	}	
