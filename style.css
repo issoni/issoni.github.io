@@ -243,7 +243,7 @@ img {
 #window1 .wincontent {	width: 550px; height: 475px;	}
 #window2 .wincontent {	width: 800px; height: 900px;	}
 #window3 .wincontent {	width: 700px; height: 300px;	}
-#window4 .wincontent {	width: 545px; height: 745px;	}
+#window4 .wincontent {	width: 100px; height: 20px;	}
 @media screen and (max-width:960px){
   #window0 {	left: 10px;	}
   #window3 {	left: 50px;	}	
