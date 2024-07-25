@@ -104,7 +104,7 @@ img {
   display: none;
 }
 .windowHeader {
-    background-color: #lightgray;
+    background-color: lightgoldenrodyellow;
     text-align: right;
     border-bottom: 2px solid #000;
     padding: 2px;
@@ -112,7 +112,7 @@ img {
     height: 28px;
 }
 .activeWindow .windowHeader {
-    background-color: lightblue;
+    background-color: yellow;
 }
 .windowHeader > span {
     display: inline-block;
