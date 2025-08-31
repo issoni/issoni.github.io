@@ -1,133 +1,198 @@
-var i = 0,
-minimizedWidth = new Array,
-minimizedHeight = new Array,
-windowTopPos = new Array,
-windowLeftPos = new Array,
-panel,
-id;
+const cursor = document.getElementById("cursor");
+const amount = 20;
+const sineDots = Math.floor(amount * 0.3);
+const width = 26;
+const idleTimeout = 150;
+let lastFrame = 0;
+let mousePosition = {x: 0, y: 0};
+let dots = [];
+let timeoutID;
+let idle = false;
+let hoverButton;
+let hoverTL;
 
-function adjustFullScreenSize() {
-  $(".fullSizeWindow .wincontent").css("width", (window.innerWidth - 32));
-  $(".fullSizeWindow .wincontent").css("height", (window.innerHeight - 98));
-}
-function makeWindowActive(thisid) {
-  $(".window").each(function() {      
-    $(this).css('z-index', $(this).css('z-index') - 1);
-  });
-  $("#window" + thisid).css('z-index',1000);
-  $(".window").removeClass("activeWindow");
-  $("#window" + thisid).addClass("activeWindow");
-
-  $(".taskbarPanel").removeClass('activeTab');
-
-  $("#minimPanel" + thisid).addClass("activeTab");
-}
-
-function minimizeWindow(id){
-  windowTopPos[id] = $("#window" + id).css("top");
-  windowLeftPos[id] = $("#window" + id).css("left");
-
-  $("#window" + id).animate({
-    top: 800,
-    left: 0
-  }, 200, function() {		//animation complete
-    $("#window" + id).addClass('minimizedWindow');
-    $("#minimPanel" + id).addClass('minimizedTab');
-    $("#minimPanel" + id).removeClass('activeTab');
-  });	
-}
-
-function openWindow(id) {
-  if ($('#window' + id).hasClass("minimizedWindow")) {
-    openMinimized(id);
-  } else {	
-    makeWindowActive(id);
-    $("#window" + id).removeClass("closed");
-    $("#minimPanel" + id).removeClass("closed");
-  }
-}
-function closeWindwow(id) {
-  $("#window" + id).addClass("closed");
-  $("#minimPanel" + id).addClass("closed");
-}
-
-function openMinimized(id) {
-  $('#window' + id).removeClass("minimizedWindow");
-  $('#minimPanel' + id).removeClass("minimizedTab");
-  makeWindowActive(id);
-
-  $('#window' + id).animate({
-    top: windowTopPos[id],
-    left: windowLeftPos[id]
-  }, 200, function() {
-  });				
-}
-
-$(document).ready(function(){
-  $(".window").each(function() {      		// window template
-    $(this).css('z-index',1000)
-    $(this).attr('data-id', i);
-    minimizedWidth[i] = $(this).width();
-    minimizedHeight[i] = $(this).height();
-    windowTopPos[i] = $(this).css("top");
-    windowLeftPos[i] = $(this).css("left");
-    $("#taskbar").append('<div class="taskbarPanel" id="minimPanel' + i + '" data-id="' + i + '">' + $(this).attr("data-title") + '</div>');
-    if ($(this).hasClass("closed")) {	$("#minimPanel" + i).addClass('closed');	}		
-    $(this).attr('id', 'window' + (i++));
-    $(this).wrapInner('<div class="wincontent"></div>');
-    $(this).prepend('<div class="windowHeader"><strong>' + $(this).attr("data-title") + '</strong><span title="Minimize" class="winminimize"><span></span></span><span title="Maximize" class="winmaximize"><span></span><span></span></span><span title="Close" class="winclose">x</span></div>');
-  });
-
-  $("#minimPanel" + (i-1)).addClass('activeTab');
-  $("#window" + (i-1)).addClass('activeWindow');
-
-  $( ".wincontent" ).resizable();			// resizable
-  $( ".window" ).draggable({ cancel: ".wincontent" });	// draggable
-
-
-    $(".window").mousedown(function(){		// active window on top (z-index 1000)
-    makeWindowActive($(this).attr("data-id"));
-    });
-
-    $(".winclose").click(function(){		// close window
-    closeWindwow($(this).parent().parent().attr("data-id"));
-    });	
-
-    $(".winminimize").click(function(){		// minimize window
-    minimizeWindow($(this).parent().parent().attr("data-id"));
-    });	
-
-    $(".taskbarPanel").click(function(){		// taskbar click
-    id = $(this).attr("data-id");
-    if ($(this).hasClass("activeTab")) {	// minimize if active
-      minimizeWindow($(this).attr("data-id"));
-    } else {
-      if ($(this).hasClass("minimizedTab")) {	// open if minimized
-        openMinimized(id);
-      } else {								// activate if inactive
-        makeWindowActive(id);
-      }
+class HoverButton {
+    constructor(id) {
+        this.hovered = false;
+        this.animatingHover = false;
+        this.forceOut = false;
+        this.timing = 0.65;
+        this.el = document.getElementById(id);
+        this.bg = this.el.getElementsByClassName("bg")[0];
+        this.el.addEventListener("mouseenter", this.onMouseEnter);
+        this.el.addEventListener("mouseleave", this.onMouseLeave);
     }
-    });	
 
-    $(".openWindow").click(function(){		// open closed window
-    openWindow($(this).attr("data-id"));
-    });
+    onMouseEnter = () => {
+        this.hoverInAnim();
+    };
 
-    $(".winmaximize").click(function(){
-    if ($(this).parent().parent().hasClass('fullSizeWindow')) {			// minimize
+    hoverInAnim = () => {
+        if (!this.hovered) {
+            this.hovered = true;
+            this.animatingHover = true;
+            this.forceOut = false;
+            TweenMax.fromTo(
+                this.bg,
+                this.timing,
+                {x: "-112%"},
+                {
+                    x: "-12%",
+                    ease: Power3.easeOut,
+                    onComplete: () => {
+                        this.animatingHover = false;
+                        if (this.forceOut) {
+                            this.foceOut = false;
+                            this.hoverOutAnim();
+                        }
+                    }
+                }
+            );
+        }
+    };
 
-      $(this).parent().parent().removeClass('fullSizeWindow');
-      $(this).parent().parent().children(".wincontent").height(minimizedHeight[$(this).parent().parent().attr("data-id")]);	
-      $(this).parent().parent().children(".wincontent").width(minimizedWidth[$(this).parent().parent().attr("data-id")]);
-    } else {															// maximize
-      $(this).parent().parent().addClass('fullSizeWindow');
+    onMouseLeave = () => {
+        if (!this.animatingHover) {
+            this.hoverOutAnim();
+        } else {
+            this.forceOut = true;
+        }
+    };
 
-      minimizedHeight[$(this).parent().parent().attr('data-id')] = $(this).parent().parent().children(".wincontent").height();
-      minimizedWidth[$(this).parent().parent().attr('data-id')] = $(this).parent().parent().children(".wincontent").width();
+    hoverOutAnim = () => {
+        this.hovered = false;
+        TweenMax.to(this.bg, this.timing, {
+            x: "100%",
+            ease: Power3.easeOut,
+            onComplete: () => {
+            }
+        });
+    };
+}
 
-      adjustFullScreenSize();
+class Dot {
+    constructor(index = 0) {
+        this.index = index;
+        this.anglespeed = 0.05;
+        this.x = 0;
+        this.y = 0;
+        this.scale = 1 - 0.05 * index;
+        this.range = width / 2 - width / 2 * this.scale + 2;
+        this.limit = width * 0.75 * this.scale;
+        this.element = document.createElement("span");
+        TweenMax.set(this.element, {scale: this.scale});
+        cursor.appendChild(this.element);
     }
-    });		
-  adjustFullScreenSize();	
-});
+
+    lock() {
+        this.lockX = this.x;
+        this.lockY = this.y;
+        this.angleX = Math.PI * 2 * Math.random();
+        this.angleY = Math.PI * 2 * Math.random();
+    }
+
+    draw(delta) {
+        if (!idle || this.index <= sineDots) {
+            TweenMax.set(this.element, {x: this.x, y: this.y});
+        } else {
+            this.angleX += this.anglespeed;
+            this.angleY += this.anglespeed;
+            this.y = this.lockY + Math.sin(this.angleY) * this.range;
+            this.x = this.lockX + Math.sin(this.angleX) * this.range;
+            TweenMax.set(this.element, {x: this.x, y: this.y});
+        }
+    }
+}
+
+class Circle {
+    constructor(id) {
+        const el = document.getElementById(id);
+        const parent = el.parentElement;
+        parent.removeChild(el);
+        const chars = el.innerText.split("");
+        chars.push(" ");
+        for (let i = 0; i < chars.length; i++) {
+            const span = document.createElement("span");
+            span.innerText = chars[i];
+            span.className = `char${i + 1}`;
+            parent.appendChild(span);
+        }
+    }
+}
+
+function init() {
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("touchmove", onTouchMove);
+    hoverButton = new HoverButton("button");
+    // eslint-disable-next-line no-new
+    new Circle("circle-content");
+    lastFrame += new Date();
+    buildDots();
+    render();
+}
+
+/*function limit(value, min, max) {
+    return Math.min(Math.max(min, value), max);
+}*/
+
+function startIdleTimer() {
+    timeoutID = setTimeout(goInactive, idleTimeout);
+    idle = false;
+}
+
+function resetIdleTimer() {
+    clearTimeout(timeoutID);
+    startIdleTimer();
+}
+
+function goInactive() {
+    idle = true;
+    for (let dot of dots) {
+        dot.lock();
+    }
+}
+
+function buildDots() {
+    for (let i = 0; i < amount; i++) {
+        let dot = new Dot(i);
+        dots.push(dot);
+    }
+}
+
+const onMouseMove = event => {
+    mousePosition.x = event.clientX - width / 2;
+    mousePosition.y = event.clientY - width / 2;
+    resetIdleTimer();
+};
+
+const onTouchMove = () => {
+    mousePosition.x = event.touches[0].clientX - width / 2;
+    mousePosition.y = event.touches[0].clientY - width / 2;
+    resetIdleTimer();
+};
+
+const render = timestamp => {
+    const delta = timestamp - lastFrame;
+    positionCursor(delta);
+    lastFrame = timestamp;
+    requestAnimationFrame(render);
+};
+
+const positionCursor = delta => {
+    let x = mousePosition.x;
+    let y = mousePosition.y;
+    dots.forEach((dot, index, dots) => {
+        let nextDot = dots[index + 1] || dots[0];
+        dot.x = x;
+        dot.y = y;
+        dot.draw(delta);
+        if (!idle || index <= sineDots) {
+            const dx = (nextDot.x - dot.x) * 0.35;
+            const dy = (nextDot.y - dot.y) * 0.35;
+            x += dx;
+            y += dy;
+        }
+    });
+};
+
+init();
