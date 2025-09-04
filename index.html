@@ -1,58 +1,366 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="800">
-			  <defs>
-			    <filter id="goo">
-			      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
-			      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 35 -15" result="goo" />
-			      <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
-			    </filter>
-			  </defs>
-			</svg>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ishika Soni</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<div class="page">
-	
-	<div class="page-bg">
-		<p>M</p>
-		<div class="noise"></div>
-	</div>
-	
-	<div class="lines">
-		<div class="line1"></div>
-		<div class="line2"></div>
-		<div class="line3"></div>
-		<div class="line4"></div>
-		<div class="line5"></div>
-	</div>
-	
-	<div class="container">
-		<div class="child">
-			<div class="content">
-				<div>
-				<div id="button" class="HoverButton">
-					<div class="bg"></div>
-					<h1>Hover Me</h1>
-				</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="images">
-		<img src="https://foo-exp.s3.amazonaws.com/morph_mouse/img_big.png" class="big" id="bigImg">
-		<img src="https://foo-exp.s3.amazonaws.com/morph_mouse/img_small.png" class="small" id="smallImg">
-	</div>
-	
-	<div class="stamp">
-		<div class="circle">
-			<p id="circle-content">EXPERIMENTS . EXPERIMENTS .</p>
-		</div>
-		<p>2018</p>
-	</div>
-	
-	<div class="design">
-		<p>Best viewed on Chrome</p>
-		<a href="https://dribbble.com/eaamst" target="blank">Designed by: Eder Anaya</a>
-	</div>
-	
-</div>
-<div id="cursor" class="Cursor">
-</div>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f5f3f0;
+            color: #2d4a87;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            padding: 2rem 0;
+            font-size: 1.1rem;
+        }
+
+        nav a {
+            color: #2d4a87;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* Logo */
+        .logo-section {
+            text-align: center;
+            margin: 4rem 0 6rem 0;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 3rem auto;
+            position: relative;
+        }
+
+        /* Simple geometric logo inspired by the original */
+        .logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Main heading */
+        .main-title {
+            font-size: 4rem;
+            font-weight: normal;
+            margin-bottom: 2rem;
+            letter-spacing: 0.02em;
+        }
+
+        .name {
+            font-style: italic;
+            font-weight: 300;
+            color: #2d4a87;
+            margin-bottom: 3rem;
+        }
+
+        .role-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .role-pill {
+            border: 2px solid #2d4a87;
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        /* About Section */
+        .about {
+            text-align: center;
+            margin: 8rem 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            font-weight: normal;
+            margin-bottom: 3rem;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #4a5568;
+        }
+
+        /* Work Section */
+        .work {
+            margin: 8rem 0;
+        }
+
+        .work h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: normal;
+            margin-bottom: 4rem;
+        }
+
+        .work-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .work-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 2rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .work-item:hover {
+            opacity: 0.8;
+        }
+
+        .work-item:last-child {
+            border-bottom: none;
+        }
+
+        .work-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-description {
+            color: #4a5568;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .work-tags {
+            font-size: 0.9rem;
+            color: #718096;
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            margin: 8rem 0 4rem 0;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            font-weight: normal;
+            margin-bottom: 3rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-links a {
+            color: #2d4a87;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #718096;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Small decorative element */
+        .decorative-circle {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #2d4a87;
+            border-radius: 50%;
+            margin: 4rem auto;
+            position: relative;
+        }
+
+        .decorative-circle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background-color: #2d4a87;
+            border-radius: 50%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                gap: 2rem;
+            }
+
+            .main-title {
+                font-size: 2.5rem;
+            }
+
+            .role-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="#home">index</a>
+            <a href="#about">about</a>
+            <a href="#contact">contact</a>
+        </nav>
+
+        <section id="home" class="logo-section">
+            <div class="logo">
+                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Minimalist geometric logo for Ishika Soni -->
+                    <g fill="none" stroke="#2d4a87" stroke-width="2">
+                        <!-- Letter I -->
+                        <line x1="30" y1="20" x2="30" y2="70" />
+                        <line x1="25" y1="20" x2="35" y2="20" />
+                        <line x1="25" y1="70" x2="35" y2="70" />
+                        
+                        <!-- Letter S -->
+                        <path d="M50 20 Q60 20 60 30 Q60 40 50 40 Q40 40 40 50 Q40 60 50 60 Q60 60 60 70" />
+                        
+                        <!-- Decorative geometric elements -->
+                        <circle cx="85" cy="25" r="8" />
+                        <rect x="77" y="45" width="16" height="16" transform="rotate(45 85 53)" />
+                        
+                        <!-- Additional minimalist lines -->
+                        <line x1="15" y1="85" x2="45" y2="85" />
+                        <line x1="55" y1="85" x2="85" y2="85" />
+                        <circle cx="95" cy="85" r="3" fill="#2d4a87" />
+                    </g>
+                </svg>
+            </div>
+
+            <h1 class="main-title">Hi my name is</h1>
+            <h2 class="name">Ishika Soni</h2>
+            
+            <div class="role-container">
+                <span>I'm a</span>
+                <div class="role-pill">UX/UI</div>
+                <span>designer</span>
+            </div>
+        </section>
+
+        <div class="decorative-circle"></div>
+
+        <section id="about" class="about">
+            <h2>about</h2>
+            <p>I'm a UX designer passionate about creating thoughtful digital experiences that bridge the gap between user needs and business goals.</p>
+            <p>With a background in human-centered design, I focus on research-driven solutions that are both functional and delightful to use.</p>
+            <p>Currently based in the Bay Area, I enjoy collaborating with cross-functional teams to bring ideas to life.</p>
+        </section>
+
+        <section class="work">
+            <h2>selected work</h2>
+            <div class="work-list">
+                <div class="work-item">
+                    <h3 class="work-title">Healthcare Patient Portal</h3>
+                    <p class="work-description">Redesigned mobile experience to improve patient engagement and medication adherence</p>
+                    <p class="work-tags">Mobile UX • Healthcare • User Research</p>
+                </div>
+                
+                <div class="work-item">
+                    <h3 class="work-title">Sustainable Fashion Marketplace</h3>
+                    <p class="work-description">Led UX strategy for discovery and trust-building in ethical shopping</p>
+                    <p class="work-tags">E-commerce • Web Design • Conversion Optimization</p>
+                </div>
+                
+                <div class="work-item">
+                    <h3 class="work-title">Small Business Analytics Dashboard</h3>
+                    <p class="work-description">Made complex data accessible through intuitive visualization and information architecture</p>
+                    <p class="work-tags">Data Visualization • B2B • Information Design</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>let's work together</h2>
+            <div class="contact-links">
+                <a href="mailto:ishika@example.com">email</a>
+                <a href="#">linkedin</a>
+                <a href="#">resume</a>
+            </div>
+        </section>
+
+        <div class="decorative-circle"></div>
+
+        <footer>
+            <p>© 2025 Ishika Soni</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
