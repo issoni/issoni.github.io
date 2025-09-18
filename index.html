@@ -12,12 +12,32 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
-            background-color: #f5f3f0;
-            color: #2d4a87;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
+    font-family: 'Georgia', serif;
+    background: linear-gradient(-45deg, #FFDCDC, #FFF2EB, #FFE8CD, #FFD6BA);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: #1a365d;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    75% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
         .container {
             max-width: 900px;
@@ -35,10 +55,10 @@
         }
 
         nav a {
-            color: #2d4a87;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
+    color: #1a365d;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
 
         nav a:hover {
             opacity: 0.7;
@@ -67,15 +87,12 @@
         .main-title {
             font-size: 4rem;
             font-weight: normal;
-            margin-bottom: 2rem;
             letter-spacing: 0.02em;
         }
 
         .name {
-            font-style: italic;
             font-weight: 300;
             color: #2d4a87;
-            margin-bottom: 3rem;
         }
 
         .role-container {
@@ -137,6 +154,10 @@
             border-bottom: 1px solid #e2e8f0;
             padding: 2rem 0;
             transition: all 0.3s ease;
+            display: grid;
+            grid-template-columns: 1fr 120px;
+            gap: 2rem;
+            align-items: center;
         }
 
         .work-item:hover {
@@ -147,6 +168,20 @@
             border-bottom: none;
         }
 
+        .work-content {
+            /* Content goes here */
+        }
+
+        .work-image {
+            width: 120px;
+            height: 80px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+        }
         .work-title {
             font-size: 1.5rem;
             font-weight: 500;
@@ -190,6 +225,24 @@
             font-size: 1.2rem;
             transition: opacity 0.3s ease;
         }
+      
+      .resume {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+      
+      .resume a {
+            color: #2d4a87;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: opacity 0.3s ease;
+       }
+      
+      .resume a:hover {
+            opacity: 0.7;
+
+      }
 
         .contact-links a:hover {
             opacity: 0.7;
@@ -240,6 +293,15 @@
                 flex-direction: column;
                 gap: 1rem;
             }
+          
+            .work-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .work-image {
+                margin: 1rem auto 0 auto;
+            }
 
             .contact-links {
                 flex-direction: column;
@@ -261,8 +323,10 @@
     <div class="container">
         <nav>
             <a href="#home">home</a>
-            <a href="#about">about</a>
-            <a href="#contact">contact</a>
+            <a href="#home">selected work</a>
+            <a href="#home">other projects</a>            
+            <a href="#home">writing</a>
+            <a href="#home">sketching</a>
         </nav>
 
         <section id="home" class="logo-section">
@@ -276,11 +340,11 @@
                         <line x1="25" y1="70" x2="35" y2="70" />
                         
                         <!-- Letter S -->
-                        <path d="M50 20 Q60 20 60 30 Q60 40 50 40 Q40 40 40 50 Q40 60 50 60 Q60 60 60 70" />
+                        <path d="M60 20 Q50 20 50 30 Q50 40 60 40 Q70 40 70 50 Q70 60 60 60 Q50 60 50 70" />
                         
                         <!-- Decorative geometric elements -->
-                        <circle cx="85" cy="25" r="8" />
-                        <rect x="77" y="45" width="16" height="16" transform="rotate(45 85 53)" />
+                        <circle cx="89" cy="25" r="8" />
+                        <rect x="83" y="45" width="16" height="16" transform="rotate(45 85 53)" />
                         
                         <!-- Additional minimalist lines -->
                         <line x1="15" y1="85" x2="45" y2="85" />
@@ -290,89 +354,122 @@
                 </svg>
             </div>
 
-            <h1 class="main-title">Hello, world!</h1>
-            <h2 class="name">i'm Ishika Soni,</h2>
+            <h1 class="main-title">Ishika Soni</h1>
+          <h3 class="name"> <strong>Technical designer</strong> crafting end-to-end solutions, from initial design to fully coded prototypes.
+</h3>
+          <br>
             
-            <div class="role-container">
-                <span>a </span>
-                <div class="role-pill">designer</div>
-                <span> & </span>
-                <div class="role-pill">researcher</div>
-                <span> with an </span>
-                <div class="role-pill">engineering</div>
-                <span>background.</span>
+            <div class="role-container"\>
+                <div class="role-pill">
+                  <div class="resume"> 
+                    <a href=#>resume</a>
+                  </div>
+              </div>
+            </div>
+          <br>
+            <div class="contact-links">
+                <a href="mailto:ishikasoni50@gmail.com">email</a>
+                <a href="https://www.linkedin.com/in/ishika-soni/">linkedin</a>
+                <a href="https://www.behance.net/ishikasoni2">behance</a>
+                <a href="https://dribbble.com/ishikasoni50">dribble</a>
+                <a href="https://github.com/issoni">github</a>
+
             </div>
         </section>
 
         <div class="decorative-circle"></div>
 
-        <section id="about" class="about">
-            <h2>about</h2>
-            <p>I’m a product designer and researcher with a strong engineering background, blending creativity, empathy, and technical expertise to craft meaningful, human-centered experiences.</p>
-            <p>With a background in computer science and a focused passion for human-centered design, I build logical and research-driven solutions that are both functional and delightful to use.</p>
-            <p>Currently based in Redmond, WA, I am working as a Software Engineer at Microsoft and looking to transition into the design space to help teams bring ideas to life.</p>
-        </section>
-
         <section class="work">
             <h2>selected work</h2>
             <div class="work-list">
-                <div class="work-item">
-                    <h3 class="work-title">Be Loud Studios Web App Redesign</h3>
-                    <p class="work-description">Partnered with Tech Fleet to research and redesign the digital presence of a youth-centered creative nonprofit.</p>
-                    <p class="work-tags">Web Design • Nonprofit • User Research</p>
-                </div>
+              <div class="work-list">
+    <div class="work-item">
+        <div class="work-content">
+            <h3 class="work-title">Microsoft Dynamics 365 CRM Interaction Design</h3>
+            <p class="work-description">Improved error handling and usability within Microsoft’s internal CRM email system to reduce failures and enhance trust at scale.</p>
+            <p class="work-tags">Enterprise UX • UX Engineering • Error Recovery Design</p>
+        </div>
+        <div class="work-image">
+            <svg width="80" height="60" viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
+                <rect width="50" height="45" x="15" y="8" rx="4" fill="none" stroke="#4a90a4" stroke-width="1.5"/>
+                <rect width="40" height="4" x="20" y="15" rx="2" fill="#4a90a4" opacity="0.3"/>
+                <rect width="35" height="3" x="20" y="22" rx="1.5" fill="#4a90a4" opacity="0.5"/>
+                <rect width="30" height="3" x="20" y="28" rx="1.5" fill="#4a90a4" opacity="0.5"/>
+                <circle cx="25" cy="38" r="3" fill="none" stroke="#4a90a4" stroke-width="1"/>
+                <circle cx="35" cy="38" r="3" fill="none" stroke="#4a90a4" stroke-width="1"/>
+                <circle cx="45" cy="38" r="3" fill="#4a90a4"/>
+            </svg>
+        </div>
+    </div>
+    
+    <div class="work-item">
+        <div class="work-content">
+            <h3 class="work-title">Microsoft Ability Hack: Deaf Customer Support Experience</h3>
+            <p class="work-description">Co-designed an inclusive support tool to improve communication between Deaf customers and support engineers using visual assistance.</p>
+            <p class="work-tags">Accessibility • Inclusive Design • Conversational UX</p>
+        </div>
+        <div class="work-image">
+            <svg width="80" height="60" viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
+                <rect width="60" height="40" x="10" y="10" rx="3" fill="none" stroke="#4a90a4" stroke-width="1.5"/>
+                <rect width="12" height="16" x="15" y="15" rx="2" fill="#4a90a4" opacity="0.3"/>
+                <rect width="12" height="16" x="30" y="15" rx="2" fill="#4a90a4" opacity="0.5"/>
+                <rect width="12" height="16" x="45" y="15" rx="2" fill="#4a90a4" opacity="0.3"/>
+                <rect width="8" height="2" x="17" y="35" rx="1" fill="#4a90a4" opacity="0.6"/>
+                <rect width="8" height="2" x="32" y="35" rx="1" fill="#4a90a4" opacity="0.6"/>
+                <rect width="8" height="2" x="47" y="35" rx="1" fill="#4a90a4" opacity="0.6"/>
+                <circle cx="62" cy="42" r="2" fill="#4a90a4"/>
+            </svg>
+        </div>
+    </div>
+    
+    <div class="work-item">
+        <div class="work-content">
+            <h3 class="work-title">AI Integration for Solo Creator Apps</h3>
+            <p class="work-description">Reimagined the user experience of Etsy, Canva, and Medium by integrating explainable AI to empower solo creators in content, branding, and storytelling.</p>
+            <p class="work-tags">AI Design • Creator Tools • Ethical UX</p>
+        </div>
+        <div class="work-image">
+            <svg width="80" height="60" viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
+                <rect width="65" height="45" x="7" y="8" rx="3" fill="none" stroke="#4a90a4" stroke-width="1.5"/>
+                <line x1="15" y1="35" x2="25" y2="25" stroke="#4a90a4" stroke-width="2" fill="none"/>
+                <line x1="25" y1="25" x2="35" y2="30" stroke="#4a90a4" stroke-width="2" fill="none"/>
+                <line x1="35" y1="30" x2="45" y2="20" stroke="#4a90a4" stroke-width="2" fill="none"/>
+                <line x1="45" y1="20" x2="55" y2="28" stroke="#4a90a4" stroke-width="2" fill="none"/>
+                <circle cx="15" cy="35" r="2" fill="#4a90a4"/>
+                <circle cx="25" cy="25" r="2" fill="#4a90a4"/>
+                <circle cx="35" cy="30" r="2" fill="#4a90a4"/>
+                <circle cx="45" cy="20" r="2" fill="#4a90a4"/>
+                <circle cx="55" cy="28" r="2" fill="#4a90a4"/>
+            </svg>
+        </div>
+    </div>
                 
-                <div class="work-item">
-                    <h3 class="work-title">AR-Based Physical Therapy App</h3>
-                    <p class="work-description">Investigated how AR can improve physical therapy adherence in teens recovering from hip dysplasia surgery.</p>
-                    <p class="work-tags">AR/VR • Healthcare • User Research</p>
-                </div>
-                
-                <div class="work-item">
-                    <h3 class="work-title">MindTrack: Mental Health Medication Tracker</h3>
-                    <p class="work-description">A gentle, clinically-safe mobile app that empowers users to track psychiatric medications and mental health patterns.</p>
-                    <p class="work-tags">Mobile UX • Mental Health • Patient Empowerment</p>
-                </div>
+    <div class="work-item">
+        <div class="work-content">
+            <h3 class="work-title">At-Home AR Physical Therapy for Hip Dysplasia Recovery</h3>
+            <p class="work-description">Designed a research-backed AR prototype to support post-op teens with hip dysplasia in performing safe, motivating physical therapy at home.</p>
+            <p class="work-tags">AR/VR • Pediatric Healthcare • Lived Experience Design</p>
+        </div>
+        <div class="work-image">
+            <svg width="80" height="60" viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
+                <rect width="60" height="40" x="10" y="10" rx="3" fill="none" stroke="#4a90a4" stroke-width="1.5"/>
+                <rect width="12" height="16" x="15" y="15" rx="2" fill="#4a90a4" opacity="0.3"/>
+                <rect width="12" height="16" x="30" y="15" rx="2" fill="#4a90a4" opacity="0.5"/>
+                <rect width="12" height="16" x="45" y="15" rx="2" fill="#4a90a4" opacity="0.3"/>
+                <rect width="8" height="2" x="17" y="35" rx="1" fill="#4a90a4" opacity="0.6"/>
+                <rect width="8" height="2" x="32" y="35" rx="1" fill="#4a90a4" opacity="0.6"/>
+                <rect width="8" height="2" x="47" y="35" rx="1" fill="#4a90a4" opacity="0.6"/>
+                <circle cx="62" cy="42" r="2" fill="#4a90a4"/>
+            </svg>
+        </div>
+    </div>
+</div>
+              <br>
+    <div class=resume> 
+      <a href=""> more projects -></a>
+              </div>
               
-               <div class="work-item">
-                    <h3 class="work-title">AI Tools for Solo Creators: Etsy, Canva, Medium</h3>
-                    <p class="work-description">Integrated explainable AI suggestions to boost creativity across content, design, and writing workflows.</p>
-                    <p class="work-tags">AI Integration • Creator Economy • Ethical Design</p>
-                </div>
-              
-              <div class="work-item">
-                    <h3 class="work-title">Goalden: Gamified Goal-Tracking Platform</h3>
-                    <p class="work-description">Led frontend development and product design for a social platform that motivates users to achieve goals through gamification.</p>
-                    <p class="work-tags">Frontend Dev • Gamification • Design Leadership</p>
-                </div>
-              
-              <div class="work-item">
-                    <h3 class="work-title">Sprint Planning Redesign in Azure DevOps</h3>
-                    <p class="work-description">Reduced friction and improved planning clarity with an optimized sprint workflow experience.</p>
-                    <p class="work-tags">Enterprise UX • Agile Teams • Dev Tools</p>
-                </div>
-              
-              <div class="work-item">
-                    <h3 class="work-title">VR Meditation for Mental Well-being</h3>
-                    <p class="work-description">Conducted qualitative research to design personalized immersive meditations that support emotional transitions.</p>
-                    <p class="work-tags">VR Design • Mental Health • User Research</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <h2>let's work together</h2>
-            <div class="contact-links">
-                <a href="mailto:ishikasoni50@gmail.com">email</a>
-                <a href="https://www.linkedin.com/in/ishika-soni/">linkedin</a>
-                <a href="#">resume</a>
-                <a href="https://medium.com/@ishikasoni50">medium</a>
-                <a href="https://www.behance.net/ishikasoni2">behance</a>
-                <a href="https://dribbble.com/ishikasoni50">dribble</a>
-                <a href="https://www.artstation.com/ishikasoni">artstation</a>
-                <a href="https://github.com/issoni">github</a>
-
-            </div>
+     
         </section>
 
         <div class="decorative-circle"></div>
