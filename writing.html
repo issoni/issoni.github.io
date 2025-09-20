@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ishika Soni</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(-45deg, #F6F5F2, #F0EBE3, #F3D0D7, #FFEFEF);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: #1a365d;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    75% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            padding: 2rem 0;
+            font-size: 1.1rem;
+        }
+
+        nav a {
+    color: #1a365d;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* Logo */
+        .logo-section {
+            text-align: center;
+            margin: 4rem 0 6rem 0;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 3rem auto;
+            position: relative;
+        }
+
+        /* Simple geometric logo inspired by the original */
+        .logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Main heading */
+        .main-title {
+            font-size: 4rem;
+            font-weight: normal;
+            letter-spacing: 0.02em;
+        }
+
+        .name {
+            font-weight: 300;
+            color: #2d4a87;
+        }
+
+        .role-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .role-pill {
+            border: 2px solid #2d4a87;
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        /* About Section */
+        .about {
+            text-align: center;
+            margin: 8rem 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            font-weight: normal;
+            margin-bottom: 3rem;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #4a5568;
+        }
+
+        /* Work Section */
+        .work {
+            margin: 8rem 0;
+        }
+
+        .work h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: normal;
+            margin-bottom: 4rem;
+        }
+
+        .work-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .work-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 2rem 0;
+            transition: all 0.3s ease;
+            display: grid;
+            grid-template-columns: 1fr 120px;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .work-item:hover {
+            opacity: 0.8;
+        }
+
+        .work-item:last-child {
+            border-bottom: none;
+        }
+
+        .work-content {
+            /* Content goes here */
+        }
+
+        .work-image {
+            width: 120px;
+            height: 80px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+        }
+      .work-image-container {
+          width: 120px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+       }
+      
+      .work-view-link {
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+
+        .work-view-link a {
+            color: #4a90a4;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .work-view-link a:hover {
+            opacity: 0.7;
+        }
+        .work-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-description {
+            color: #4a5568;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .work-tags {
+            font-size: 0.9rem;
+            color: #718096;
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            margin: 8rem 0 4rem 0;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            font-weight: normal;
+            margin-bottom: 3rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-links a {
+            color: #2d4a87;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: opacity 0.3s ease;
+        }
+      
+      .resume {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+      
+      .resume a {
+            color: #2d4a87;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: opacity 0.3s ease;
+       }
+      
+      .resume a:hover {
+            opacity: 0.7;
+
+      }
+
+        .contact-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #718096;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Small decorative element */
+        .decorative-circle {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #2d4a87;
+            border-radius: 50%;
+            margin: 4rem auto;
+            position: relative;
+        }
+
+        .decorative-circle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background-color: #2d4a87;
+            border-radius: 50%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                gap: 2rem;
+            }
+
+            .main-title {
+                font-size: 2.5rem;
+            }
+
+            .role-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+          
+            .work-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .work-image {
+                margin: 1rem auto 0 auto;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">home</a>
+            <a href="index.html#work">selected work</a>
+            <a href="otherprojects.html">other projects</a>            
+            <a href="writing.html">writing</a>
+            <a href="sketching.html">sketching</a>
+        </nav>
+
+     
+
+        <div class="decorative-circle"></div>
+
+        <section id="work" class="work">
+            <h2>writing</h2>
+            <div class="work-list">
+              <div class="work-list">
+    <div class="work-item">
+        <div class="work-content">
+            <h3 class="work-title">What Remains of Edith Finch and the UX of Storytelling & Immersion</h3>
+            <p class="work-description">Exploring how world design, pacing, and controls bring players closer to the lives, and deaths, of the Finch family.</p>
+            <p class="work-tags">August 28, 2025</p>
+
+        </div>
+             <div class="work-image-container"> 
+        <div class="work-image">
+            <svg width="80" height="60" viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
+                <rect width="50" height="45" x="15" y="8" rx="4" fill="none" stroke="#4a90a4" stroke-width="1.5"/>
+                <rect width="40" height="4" x="20" y="15" rx="2" fill="#4a90a4" opacity="0.3"/>
+                <rect width="35" height="3" x="20" y="22" rx="1.5" fill="#4a90a4" opacity="0.5"/>
+                <rect width="30" height="3" x="20" y="28" rx="1.5" fill="#4a90a4" opacity="0.5"/>
+                <circle cx="25" cy="38" r="3" fill="none" stroke="#4a90a4" stroke-width="1"/>
+                <circle cx="35" cy="38" r="3" fill="none" stroke="#4a90a4" stroke-width="1"/>
+                <circle cx="45" cy="38" r="3" fill="#4a90a4"/>
+            </svg>
+        </div>
+      <div class="work-view-link">
+            <a href="https://medium.com/@ishikasoni50/what-remains-of-edith-finch-and-the-ux-of-storytelling-immersion-707690fc9d4a">Read</a>
+      </div>
+      </div>
+    </div>
+    
+    <div class="work-item">
+        <div class="work-content">
+            <h3 class="work-title">Life is Strange: The Interface Between You and the Story</h3>
+            <p class="work-description">The design decisions that make player agency feel personal and lasting.</p>
+            <p class="work-tags">August 11, 2025</p>
+
+        </div>
+            <div class="work-image-container"> 
+        <div class="work-image">
+            <svg width="80" height="60" viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
+                <rect width="60" height="40" x="10" y="10" rx="3" fill="none" stroke="#4a90a4" stroke-width="1.5"/>
+                <rect width="12" height="16" x="15" y="15" rx="2" fill="#4a90a4" opacity="0.3"/>
+                <rect width="12" height="16" x="30" y="15" rx="2" fill="#4a90a4" opacity="0.5"/>
+                <rect width="12" height="16" x="45" y="15" rx="2" fill="#4a90a4" opacity="0.3"/>
+                <rect width="8" height="2" x="17" y="35" rx="1" fill="#4a90a4" opacity="0.6"/>
+                <rect width="8" height="2" x="32" y="35" rx="1" fill="#4a90a4" opacity="0.6"/>
+                <rect width="8" height="2" x="47" y="35" rx="1" fill="#4a90a4" opacity="0.6"/>
+                <circle cx="62" cy="42" r="2" fill="#4a90a4"/>
+            </svg>
+        </div>
+      <div class="work-view-link">
+            <a href="https://medium.com/@ishikasoni50/life-is-strange-the-interface-between-you-and-the-story-fd95b6548fc1">Read</a>
+      </div>
+      </div>
+    </div>
+                
+   <div class="work-item">
+        <div class="work-content">
+            <h3 class="work-title">Designing Grief: What GRIS Teaches Us About Emotional Game UX</h3>
+            <p class="work-description">A UX breakdown of how GRIS communicates emotion without words.</p>
+            <p class="work-tags">July 29, 2025</p>
+
+        </div>
+       <div class="work-image-container"> 
+
+        <div class="work-image">
+            <svg width="80" height="60" viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
+                <rect width="50" height="45" x="15" y="8" rx="4" fill="none" stroke="#4a90a4" stroke-width="1.5"/>
+                <rect width="40" height="4" x="20" y="15" rx="2" fill="#4a90a4" opacity="0.3"/>
+                <rect width="35" height="3" x="20" y="22" rx="1.5" fill="#4a90a4" opacity="0.5"/>
+                <rect width="30" height="3" x="20" y="28" rx="1.5" fill="#4a90a4" opacity="0.5"/>
+                <circle cx="25" cy="38" r="3" fill="none" stroke="#4a90a4" stroke-width="1"/>
+                <circle cx="35" cy="38" r="3" fill="none" stroke="#4a90a4" stroke-width="1"/>
+                <circle cx="45" cy="38" r="3" fill="#4a90a4"/>
+            </svg>
+        </div>
+     <div class="work-view-link">
+            <a href="https://medium.com/@ishikasoni50/designing-grief-what-gris-teaches-us-about-emotional-game-ux-e41f485449a9">Read</a>
+      </div>
+     </div>
+    </div>
+    
+    
+</div>
+              <br>
+    <div class=resume> 
+      <a href=""> <- back to home </a>
+              </div>
+              
+     
+        </section>
+
+        <div class="decorative-circle"></div>
+
+        <footer>
+            <p>© 2025 Ishika Soni</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
